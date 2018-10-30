@@ -1,13 +1,13 @@
-from tkinter import *
+from tkinter import *                   #import all tkinter methods.
 from tkinter import font
-class Info(Frame):
+class Info(Frame):                      #create base class of Info.
     def __init__(self, master=None):
         Frame.__init__(self)
         self.configure(width=500, height=50)
         police = font.Font(self, size=20, family='Times New Roman')
         self.t = Label(self, text="Blue's turn", font=police)
         self.t.grid(sticky=NSEW, pady=20)
-class point(object):
+class point(object):                     #create second class of point which contain object variable.
     def __init__(self, x, y, can, colo="white"):
         self.can = can
         self.x = x
@@ -19,7 +19,7 @@ class point(object):
     def changeColour(self, colo):
         self.can.itemconfigure(self.point, fill=colo)
         self.colo = colo
-class Board(Canvas):
+class Board(Canvas):                    #create third class of Board.
     def __init__(self, master=None):
         Canvas.__init__(self)
         self.configure(width=550, height=400, bg="Black")
@@ -127,16 +127,15 @@ class Board(Canvas):
             i += 1
 
 
-root = Tk()
-root.geometry("500x550")
-root.title("connect4 project.")
+root = Tk()                       #create root window.
+root.geometry("500x550")          #create window geometry.
+root.title("connect4 project.")   #create title of window.
 
 info = Info(root)
-info.grid(row=0, column=0)
+info.grid(row=0, column=0)        #place of info.
 
 t = Board(root)
 t.grid(row=1, column=0)
-
 
 def res():
     global info
@@ -146,5 +145,5 @@ def res():
     info.grid(row=0, column=0)
     t = Board(root)
     t.grid(row=1, column=0)
-Button(root, text="Restart", command=res).grid(row=2, column=0, pady=30)
-root.mainloop()
+Button(root, text="Restart", command=res).grid(row=2, column=0, pady=30)    #create Restart Button.
+root.mainloop()                 #close the root window.
